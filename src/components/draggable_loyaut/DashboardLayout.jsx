@@ -8,14 +8,30 @@ import {
   FormGroup,
   FormLabel,
 } from "@mui/material";
+import ControlsWidget from "./ControlsWidget.jsx";
+import EmsStatusWidget from "./EmsStatusWidget.jsx";
+import EmpcWidget from "./EmpcsWidget.jsx";
+import BatteryControlWidget from "./BatteryControlWidget.jsx";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const widgetNames = {
-  a: "Controls",
-  b: "Ems Status",
-  c: "Ess Availability",
-  d: "Empcs",
+  a: {
+    i: ControlsWidget,
+    name: "Controls",
+  },
+  b: {
+    i: EmsStatusWidget,
+    name: "Ems Status",
+  },
+  c: {
+    i: EmpcWidget,
+    name: "Empcs",
+  },
+  d: {
+    i: BatteryControlWidget,
+    name: "Battery control",
+  },
 };
 const originalItems = ["a", "b", "c", "d"];
 
@@ -57,7 +73,7 @@ const DashboardLayout = () => {
                     name={i}
                   />
                 }
-                label={widgetNames[i]}
+                label={widgetNames[i].name}
                 key={i}
               />
             ))}
@@ -73,15 +89,14 @@ const DashboardLayout = () => {
           rowHeight={60}
           onLayoutChange={onLayoutChange}
         >
-          {items.map((key) => (
-            <Box key={key}>
-              <Box
-                id={key}
-                onRemoveItem={onRemoveItem}
-                className="widget"
-              ></Box>
-            </Box>
-          ))}
+          {items.map((key) => {
+            const WidgetComponent = widgetNames[key].i;
+            return (
+              <Box key={key}>
+                <WidgetComponent />
+              </Box>
+            );
+          })}
         </ResponsiveGridLayout>
       </div>
     </div>

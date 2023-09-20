@@ -1,0 +1,85 @@
+.container {
+  position: relative;
+  border: 1px solid black;
+  height: 800px;
+  width: 800px;
+  overflow: hidden;
+
+  /* Add lines to the container on hover */
+  &:hover::before,
+  &:hover::after {
+    content: "";
+    position: absolute;
+    background-color: #e22b93; /* Line color */
+    z-index: -1; /* Place lines behind other content */
+  }
+
+  /* Line from the center to the top */
+  &:hover::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: calc(50% - 60px); /* Adjust the length as needed */
+  }
+
+  /* Line from the center to the bottom */
+  &:hover::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: calc(50% - 60px); /* Adjust the length as needed */
+    top: calc(50% + 60px); /* Adjust the top position for the bottom line */
+  }
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #e22b93;
+  height: 120px;
+  width: 120px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+
+  &:hover {
+    background-color: #ff6bcb;
+  }
+}
+
+
+//layout
+.dashboard-wrapper{
+  background: darkgray;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.side-menu{
+  width: 20%;
+  height: 100vh;
+  background: #a7eedc;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dashboard-layout{
+  width: 100%;
+  height: 100vh;
+  background: aqua;
+}
+
+.widget{
+  background: blueviolet;
+}
+.widget-2{
+  background: #ff6bcb;
+}

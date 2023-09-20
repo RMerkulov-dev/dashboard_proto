@@ -14,8 +14,10 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 const widgetNames = {
   a: "Gauge",
   b: "Progress Bar",
+  c: "Control Panel",
+  d: "Battery Status",
 };
-const originalItems = ["a", "b"];
+const originalItems = ["a", "b", "c", "d"];
 
 const DashboardLayout = () => {
   const [layout, setLayout] = useState([]);
@@ -80,9 +82,11 @@ const DashboardLayout = () => {
         >
           {items.map((key) => (
             <Box key={key}>
-              <Box id={key} onRemoveItem={onRemoveItem} className="widget">
-                1
-              </Box>
+              <Box
+                id={key}
+                onRemoveItem={onRemoveItem}
+                className="widget"
+              ></Box>
             </Box>
           ))}
         </ResponsiveGridLayout>

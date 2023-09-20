@@ -12,10 +12,10 @@ import {
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const widgetNames = {
-  a: "Gauge",
-  b: "Progress Bar",
-  c: "Control Panel",
-  d: "Battery Status",
+  a: "Controls",
+  b: "Ems Status",
+  c: "Ess Availability",
+  d: "Empcs",
 };
 const originalItems = ["a", "b", "c", "d"];
 

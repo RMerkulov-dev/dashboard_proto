@@ -67,8 +67,9 @@
   background: #a7eedc;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
+  padding: 10px;
 }
 
 .dashboard-layout{
@@ -79,6 +80,7 @@
 
 .widget{
   background: blueviolet;
+  height: 100%;
 }
 .widget-2{
   background: #ff6bcb;

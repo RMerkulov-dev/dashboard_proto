@@ -1,10 +1,21 @@
 import { Responsive, WidthProvider } from "react-grid-layout";
 import { useState } from "react";
-import { Box } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+} from "@mui/material";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
-const originalItems = ["a", "b", "c", "d"];
+const widgetNames = {
+  a: "Gauge",
+  b: "Progress Bar",
+};
+const originalItems = ["a", "b"];
 
 const DashboardLayout = () => {
   const [layout, setLayout] = useState([]);
@@ -28,9 +39,36 @@ const DashboardLayout = () => {
     setItems([...items, itemId]);
   };
 
+  const handleChange = (e) => {
+    if (e.target.checked) {
+      onAddItem(e.target.name);
+    } else {
+      onRemoveItem(e.target.name);
+    }
+  };
+
   return (
     <div className="dashboard-wrapper">
-      <div className="side-menu"></div>
+      <div className="side-menu">
+        <FormControl component="fieldset">
+          <FormLabel component="legend">Select Widgets</FormLabel>
+          <FormGroup>
+            {originalItems.map((i) => (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={items.includes(i)}
+                    onChange={handleChange}
+                    name={i}
+                  />
+                }
+                label={widgetNames[i]}
+                key={i}
+              />
+            ))}
+          </FormGroup>
+        </FormControl>
+      </div>
       <div className="dashboard-layout">
         <ResponsiveGridLayout
           className="layout"
